@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Showdown</title>
+        <meta name="author" content="
+            Derrick C - 30106757
+        ">
+        <meta name="description" content="
+            SENG 513 LEC 01 LAB B01
+            ASSIGNMENT 3 SUBMISSION
+            NOV 13 2023
+        ">
+        <link rel="stylesheet" href="styling.css">
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <h1>SHOWDOWN</h1>
+            <button id="debug-window-button"></button>
+        </div>
+        <div id="game-window">
+            <img id="p1" class="player left" src="assets/player/p1-stand.png" width="90" height="90" alt="player 1">
+            <img id="p2" class="player right" src="assets/player/p2-stand.png" width="90" height="90" alt="player 2">
+            <img id="kg1" class="kg left" src="assets/keys/keygroup-1-1.png" width="252" height="152" alt="keygroup 1">
+            <img id="kg2" class="kg right" src="assets/keys/keygroup-2-1.png" width="252" height="152" alt="keygroup 2">
+            <img id="k1" class="k left" src="assets/keys/f.png" width="90" height="90" alt="key for player 1">
+            <img id="k2" class="k right" src="assets/keys/j.png" width="90" height="90" alt="key for player 2">
+            <div id="ti" class="text middle"><p id="ti_c">Round: X<br>Distance: XX Paces</p></div>
+            <div id="tm" class="text middle"><h2 id="tm_c">XXXXX</h2></div>
+            <div id="twa" class="text middle"><h2 id="twa_c">PLAYER  X  WINS</h2></div>
+            <div id="twb" class="text middle"><p id="twb_c">Drew in XX:XXXX Seconds</p></div>
+            <div id="ti1a" class="text t1 left"><h4>YOUR KEYS</h4></div>
+            <div id="ti1b" class="text t2 left"><p>press any of them to continue</p></div>
+            <div id="ti2a" class="text t1 right"><h4>YOUR KEYS</h4></div>
+            <div id="ti2b" class="text t2 right"><p>press any of them to continue</p></div>
+            <div id="tm1" class="text t3 left"><h2>MISS</h2></div>
+            <div id="tm2" class="text t3 right"><h2>MISS</h2></div>
+            <button id="br" class="middle">Play</button>
+        </div>
+        <div id="size-error-space">
+            <h2>Sorry Friend<br>Showdown Can Only Be played on desktop</h2>
+            <p>If you are not in mobile format, check your window's resolution is at least 800px wide</p>
+        </div>
+        <div id="debug-window" style="display: none;">
+            <h4 id="keypress-listener-output">LAST KEY PRESSED: NONE</h4>
+            <button id="btn-hide-all">HIDE ALL</button>
+            <p>SET GAME ELEMENTS</p>
+            <button id="btn-a-g1">SHOW ALL FIRST STAGE COMPONENTS</button>
+            <button id="btn-a-g2">SHOW ALL SECOND STAGE COMPONENTS</button>
+            <button id="btn-a-g3">SHOW ALL THIRD STAGE COMPONENTS</button>
+            <button id="btn-a-g4">SHOW ALL FOURTH STAGE COMPONENTS</button>
+            <button id="btn-a-pos1">SHOW PLAYERS POSITION STAGE 1</button>
+            <button id="btn-a-pos2">SHOW PLAYERS POSITION STAGE 2</button>
+            <button id="btn-a-pos3">SHOW PLAYERS POSITION STAGE 3</button>
+            <p>PLAYER 1</p>
+            <button id="btn-p1-miss">SHOW MISS</button>
+            <div class="debug-container">
+                <button id="btn-p1-sprite-1">SET SPRITE READY</button>
+                <button id="btn-p1-sprite-2">SET SPRITE SHOOT</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p1-keygroup-1">SET KEYGROUP STAGE 1</button>
+                <button id="btn-p1-keygroup-2">SET KEYGROUP STAGE 2</button>
+                <button id="btn-p1-keygroup-3">SET KEYGROUP STAGE 3</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p1-key-1">SET KEY f</button>
+                <button id="btn-p1-key-2">SET KEY d</button>
+                <button id="btn-p1-key-3">SET KEY s</button>
+                <button id="btn-p1-key-4">SET KEY r</button>
+                <button id="btn-p1-key-5">SET KEY e</button>
+                <button id="btn-p1-key-6">SET KEY w</button>
+            </div>
+            <button id="btn-p1-die">PLAY LOSE ANIM</button>
+            <p>PLAYER 2</p>
+            <button id="btn-p2-miss">SHOW MISS</button>
+            <div class="debug-container">
+                <button id="btn-p2-sprite-1">SET SPRITE READY</button>
+                <button id="btn-p2-sprite-2">SET SPRITE SHOOT</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p2-keygroup-1">SET KEYGROUP STAGE 1</button>
+                <button id="btn-p2-keygroup-2">SET KEYGROUP STAGE 2</button>
+                <button id="btn-p2-keygroup-3">SET KEYGROUP STAGE 3</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p2-key-1">SET KEY j</button>
+                <button id="btn-p2-key-2">SET KEY k</button>
+                <button id="btn-p2-key-3">SET KEY l</button>
+                <button id="btn-p2-key-4">SET KEY u</button>
+                <button id="btn-p2-key-5">SET KEY i</button>
+                <button id="btn-p2-key-6">SET KEY o</button>
+            </div>
+            <button id="btn-p2-die">PLAY LOSE ANIM</button>
+            <p>AUDIO TRACKS</p>
+            <div class="debug-container">
+                <button id="btn-aud-m1">PLAY INTRO JINGLE</button>
+                <button id="btn-aud-m2">PLAY ROUND STINGER</button>
+                <button id="btn-aud-se1">PLAY READY UP SOUND EFFECT</button>
+                <button id="btn-aud-se2">PLAY GUNSHOT SOUND EFFECT</button>
+                <button id="btn-aud-vo1">PLAY READY VOICEOVER</button>
+                <button id="btn-aud-vo2">PLAY DRAW VOICEOVER</button>
+                <button id="btn-aud-vo3">PLAY P1 WIN VOICEOVER</button>
+                <button id="btn-aud-vo4">PLAY P2 WIN VOICEOVER</button>
+            </div>
+        </div>
+        <div id="instructions">
+            <h1>INSTRUCTIONS</h1>
+            <p>
+                This two-player game is about which of you have the quicker draw!<br>
+                <br>
+                When the game begins, each player is given the set of possible keys they will have to press:
+            </p>
+            <div class="i-split-2">
+                <div>
+                    <img src="assets/keys/keygroup-1-1.png" width="252" height="152" alt="keygroup 1">
+                    <p>Player 1 will get (at most) these keys</p>
+                </div>
+                <div>
+                    <img src="assets/keys/keygroup-2-1.png" width="252" height="152" alt="keygroup 2">
+                    <p>Player 2 will get (at most) these keys</p>
+                </div>
+            </div>
+            <p>
+                When both players confirm, get ready. Because after a random amount of time the game will go
+            </p>
+            <h2>DRAW</h2>
+            <p>
+                and the game will display the key each player has to press.<br>
+                Whoever presses their designated key first wins!<br>
+                <br>
+                Be careful though, if you press the wrong key you will miss, and your opponent might be able to get a free shot!<br>
+                <br>
+                if both players miss, you'll move closer and you'll get a smaller set of possible keys.<br>
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,273 @@
+/*
+Derrick C - 30106757
+SENG 513 LEC 01 LAB B01
+ASSIGNMENT 3 SUBMISSION
+NOV 13 2023
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
+* {
+    image-rendering: pixelated; /* SOURCE ATTRIBUTION: https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering */
+}
+
+body, div, p {
+    margin: 0px 0px 0px 0px;
+}
+
+body {
+    background-color: #e39c62;
+    font-family: serif;
+    font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+#game-window {
+    display: none;
+}
+
+#size-error-space {
+    display: block;
+}
+
+}
+
+@media only screen and (min-width: 801px) {
+
+    #game-window {
+        display: block;
+    }
+    
+    #size-error-space {
+        display: none;
+    }
+    
+}
+
+#size-error-space {
+    padding: 50px 50px 50px 50px;
+    background-color: brown;
+}
+
+#size-error-space > h2 {
+    text-shadow: black 2px -2px;
+}
+
+#game-window {
+    margin: auto;
+    width: 800px;
+    height: 600px;
+    border: 3px solid black;
+    background-image: url("assets/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#game-window > * {
+    position: absolute;
+}
+
+h2 {
+    font-family: 'Rye', serif;
+    font-size: 2.5rem;
+    color: orangered;
+    text-shadow: goldenrod 3px -3px; /* SOURCE ATTRIBUTION: https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow */
+}
+
+/* DEFAULT ALIGNMENT */
+.right {
+    right: 0;
+}
+
+.left {
+    left: 0;
+}
+
+/* INITIAL PLAYER ALIGNMENT*/
+.player.left {
+    left: 55px
+}
+
+.player.right {
+    right: 55px
+}
+
+.player {
+    bottom: 110px;
+}
+
+/* KEYGROUP ALIGNMENT */
+.kg.left {
+    left: 54px;
+}
+
+.kg.right {
+    right: 54px;
+}
+
+.kg {
+    top: 100px;
+}
+
+/*KEY ALIGNMENT*/
+.k.left {
+    left: 155px;
+}
+
+.k.right {
+    right: 155px;
+}
+
+.k {
+    top: 300px;
+}
+
+/* TEXT ALIGNMENT */
+.text {
+    font-family: 'Rye', serif;
+    color: orangered;
+    text-shadow: goldenrod 2px -2px;
+}
+
+.text > * {
+    margin: 0px 0px 0px 0px;
+}
+
+#ti {
+    Top: 290px;
+    color: white;
+    text-shadow: none;
+}
+
+#tm {
+    top: 150px;
+}
+
+#twa {
+    top: 170px;
+}
+
+#twb {
+    top: 210px;
+}
+
+.middle {
+    width: 100%;
+    text-align: center;
+}
+
+.t1.left {
+    left: 100px;
+}
+
+.t1.right {
+    right: 100px;
+}
+
+.t1{
+    top: 70px;
+}
+
+.t2.left {
+    left: 10px;
+}
+
+.t2.right {
+    right: 10px;
+}
+
+.t2 {
+    top: 260px;
+}
+
+.t3.left {
+    left: 110px;
+}
+
+.t3.right {
+    right: 110px;
+}
+
+.t3{
+    top: 190px;
+}
+
+/* Button alignment */ 
+#br {
+    width: 160px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: maroon;
+    color: white;
+    font-family: 'Rye', serif;
+    font-size: 1.2rem;
+    left: 320px;
+    bottom: 280px;
+}
+
+#header {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 900px) {
+    #header > h1 {
+        font-family: 'Rye', serif;
+        font-size: 8rem;
+        color: orangered;
+        text-shadow: black 6px -6px;
+    }
+}
+
+@media only screen and (max-width: 899px) {
+    #header > h1 {
+        font-family: 'Rye', serif;
+        font-size: 6rem;
+        color: orangered;
+        text-shadow: black 6px -6px;
+    }
+}
+
+#instructions {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+#instructions > h1 {
+    font-family: 'Rye', serif;
+    font-size: 3rem;
+    color: orangered;
+    text-shadow: black 4px -4px;
+}
+
+.i-split-2 {
+    padding: 30px 10vw 30px 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.i-split-2 > div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+#debug-window {
+    margin: 50px 50px 50px 50px;
+    background-color: lightblue;
+}
+
+#debug-window-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(50, 50, 50);
+    opacity: 0.1;
+}
