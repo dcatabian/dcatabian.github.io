@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    image-rendering: pixelated; /* SOURCE ATTRIBUTION: https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering */
+}
+
+body, div, p {
+    margin: 0px 0px 0px 0px;
+}
+
+body {
+    background-color: lightgreen;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+}
+
+.width-formatting {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+#topbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(52, 125, 52);
+    text-align: center;
+    color: rgb(50, 47, 47);
+    vertical-align: middle;
+}
+
+#content {
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: rgb(50, 47, 47);
+    background-color: rgb(82, 180, 82);
+    border: 1px solid black;
+}
+
+.content-block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-content {
+    text-indent: 2em;
+}
+
+.inner-image {
+    display: flex;
+}
+
+.inner-image > img {
+    width: 100%;
+    height: auto
+}
