@@ -139,6 +139,19 @@ img{
     height: 7em
 }
 
+#coke {
+    height: 8em;
+    margin-right: 40px;
+}
+
+#meme {
+    height: 14em;
+}
+
+#arabic {
+    width: 550px;
+}
+
 .center {
     margin-left: 10px;
     margin-right: 10px;
