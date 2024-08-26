@@ -1,225 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Zero - a Reference, Tool, and Origin Point</title>
+        <title>Showdown</title>
         <meta name="author" content="
             Derrick C - 30106757
-            Yousin Al-Ali - 30093769
         ">
         <meta name="description" content="
-            MATH 305
-            Concept Study - Zero
-            APR 9 2024
+            SENG 513 LEC 01 LAB B01
+            ASSIGNMENT 3 SUBMISSION
+            NOV 13 2023
         ">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="styling.css">
+        <script src="app.js"></script>
     </head>
     <body>
-        <div id="to_top_icon">
-            <a href="#topbar"><i class="fa-solid fa-chevron-up"></i></a>
+        <div id="header">
+            <h1>SHOWDOWN</h1>
+            <button id="debug-window-button"></button>
         </div>
-        <div id="topbar" class="width-formatting">
-            <h1>Zero - a Reference, Tool, and Origin Point</h1>
-            <h3>Derrick Catabian - Yousif Al-Ali - MATH 305 - April 11 2024</h3>
-            <div id="topbar_links">
-                <a href="#history_1">Historical Emergence</a>
-                <a href="#history_2">Indian Development and Spread</a>
-                <a href="#computers">Zero in Computer Representations</a>
-                <a href="#origin">The Unifier - Zero as the Origin</a>
-                <a href="#references">References</a>
+        <div id="game-window">
+            <img id="p1" class="player left" src="assets/player/p1-stand.png" width="90" height="90" alt="player 1">
+            <img id="p2" class="player right" src="assets/player/p2-stand.png" width="90" height="90" alt="player 2">
+            <img id="kg1" class="kg left" src="assets/keys/keygroup-1-1.png" width="252" height="152" alt="keygroup 1">
+            <img id="kg2" class="kg right" src="assets/keys/keygroup-2-1.png" width="252" height="152" alt="keygroup 2">
+            <img id="k1" class="k left" src="assets/keys/f.png" width="90" height="90" alt="key for player 1">
+            <img id="k2" class="k right" src="assets/keys/j.png" width="90" height="90" alt="key for player 2">
+            <div id="ti" class="text middle"><p id="ti_c">Round: X<br>Distance: XX Paces</p></div>
+            <div id="tm" class="text middle"><h2 id="tm_c">XXXXX</h2></div>
+            <div id="twa" class="text middle"><h2 id="twa_c">PLAYER  X  WINS</h2></div>
+            <div id="twb" class="text middle"><p id="twb_c">Drew in XX:XXXX Seconds</p></div>
+            <div id="ti1a" class="text t1 left"><h4>YOUR KEYS</h4></div>
+            <div id="ti1b" class="text t2 left"><p>press any of them to continue</p></div>
+            <div id="ti2a" class="text t1 right"><h4>YOUR KEYS</h4></div>
+            <div id="ti2b" class="text t2 right"><p>press any of them to continue</p></div>
+            <div id="tm1" class="text t3 left"><h2>MISS</h2></div>
+            <div id="tm2" class="text t3 right"><h2>MISS</h2></div>
+            <button id="br" class="middle">Play</button>
+        </div>
+        <div id="size-error-space">
+            <h2>Sorry Friend<br>Showdown Can Only Be played on desktop</h2>
+            <p>If you are not in mobile format, check your window's resolution is at least 800px wide</p>
+        </div>
+        <div id="debug-window" style="display: none;">
+
+            <h4 id="keypress-listener-output">LAST KEY PRESSED: NONE</h4>
+            <button id="btn-hide-all">HIDE ALL</button>
+            <p>SET GAME ELEMENTS</p>
+            <button id="btn-a-g1">SHOW ALL FIRST STAGE COMPONENTS</button>
+            <button id="btn-a-g2">SHOW ALL SECOND STAGE COMPONENTS</button>
+            <button id="btn-a-g3">SHOW ALL THIRD STAGE COMPONENTS</button>
+            <button id="btn-a-g4">SHOW ALL FOURTH STAGE COMPONENTS</button>
+            <button id="btn-a-pos1">SHOW PLAYERS POSITION STAGE 1</button>
+            <button id="btn-a-pos2">SHOW PLAYERS POSITION STAGE 2</button>
+            <button id="btn-a-pos3">SHOW PLAYERS POSITION STAGE 3</button>
+            <p>PLAYER 1</p>
+            <button id="btn-p1-miss">SHOW MISS</button>
+            <div class="debug-container">
+                <button id="btn-p1-sprite-1">SET SPRITE READY</button>
+                <button id="btn-p1-sprite-2">SET SPRITE SHOOT</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p1-keygroup-1">SET KEYGROUP STAGE 1</button>
+                <button id="btn-p1-keygroup-2">SET KEYGROUP STAGE 2</button>
+                <button id="btn-p1-keygroup-3">SET KEYGROUP STAGE 3</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p1-key-1">SET KEY f</button>
+                <button id="btn-p1-key-2">SET KEY d</button>
+                <button id="btn-p1-key-3">SET KEY s</button>
+                <button id="btn-p1-key-4">SET KEY r</button>
+                <button id="btn-p1-key-5">SET KEY e</button>
+                <button id="btn-p1-key-6">SET KEY w</button>
+            </div>
+            <button id="btn-p1-die">PLAY LOSE ANIM</button>
+            <p>PLAYER 2</p>
+            <button id="btn-p2-miss">SHOW MISS</button>
+            <div class="debug-container">
+                <button id="btn-p2-sprite-1">SET SPRITE READY</button>
+                <button id="btn-p2-sprite-2">SET SPRITE SHOOT</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p2-keygroup-1">SET KEYGROUP STAGE 1</button>
+                <button id="btn-p2-keygroup-2">SET KEYGROUP STAGE 2</button>
+                <button id="btn-p2-keygroup-3">SET KEYGROUP STAGE 3</button>
+            </div>
+            <div class="debug-container">
+                <button id="btn-p2-key-1">SET KEY j</button>
+                <button id="btn-p2-key-2">SET KEY k</button>
+                <button id="btn-p2-key-3">SET KEY l</button>
+                <button id="btn-p2-key-4">SET KEY u</button>
+                <button id="btn-p2-key-5">SET KEY i</button>
+                <button id="btn-p2-key-6">SET KEY o</button>
+            </div>
+            <button id="btn-p2-die">PLAY LOSE ANIM</button>
+            <p>AUDIO TRACKS</p>
+            <div class="debug-container">
+                <button id="btn-aud-m1">PLAY INTRO JINGLE</button>
+                <button id="btn-aud-m2">PLAY ROUND STINGER</button>
+                <button id="btn-aud-se1">PLAY READY UP SOUND EFFECT</button>
+                <button id="btn-aud-se2">PLAY GUNSHOT SOUND EFFECT</button>
+                <button id="btn-aud-vo1">PLAY READY VOICEOVER</button>
+                <button id="btn-aud-vo2">PLAY DRAW VOICEOVER</button>
+                <button id="btn-aud-vo3">PLAY P1 WIN VOICEOVER</button>
+                <button id="btn-aud-vo4">PLAY P2 WIN VOICEOVER</button>
             </div>
         </div>
-        
-        <div id="content" class="width-formatting">
-            <div id="introduction" class="section-header content-block">
-                <h2>Introduction</h2>
-            </div>
-            <div class="section-content content-block">
-                <p>
-                    Modern definitions of zero encompass various metaphors, reflecting its nuanced conceptualization across disciplines. It can be described as the "absence of all quantity or magnitude" and positioned as "the number between the set of all negative numbers and the set of all positive numbers." In essence, it serves as "the point of departure in reckoning" and marks "the point from which the graduation of a scale begins," akin to zeroing a rifle. Furthermore, zero signifies a "state of total absence or neutrality" and can be viewed as "something arbitrarily or conveniently designated as zero." Beyond its numerical implications, the "zero metaphor" symbolizes a state of equilibrium or resolution, suggesting the resolution of challenges or conflicts to the point of non-existence. This multifaceted understanding underscores its significance in various contexts, shaping perspectives on the universe and even concepts of divinity. [3]
-                </p>
-                <br/>
-                <p>
-                    The emergence of zero traverses distinct stages, showing its evolution within cognitive frameworks. Initially, it signifies the absence of a stimulus, akin to a mental or neural resting state devoid of specific attributes. As understanding progresses, this absence gains meaning as a significant behavioral category, though devoid of quantitative relevance initially. Subsequently, "nothing" acquires quantitative significance, represented as an empty set positioned at the lower end of a number line. This symbolic representation eventually extends to become the number zero, marking a pivotal advancement in mathematical abstraction and paving the way for comprehensive number theory [4].
-                </p>
-                <br/>
-                <div class="inner-image">
-                    <img src="assets/coke.png" id="coke"> 
-                    <p>
-                        As an example, consider Coke Zero:<br/>
-                        <br/>
-                            - It is advertised to us as the absence of something (sugar) adding to our overall experience<br/>
-                            - Zero then can mean an increase in value if the zero in question is “harmful” to us
-                    </p>
+        <div id="foreword" class="text-stuff">
+			<h1>What is "Showdown"?</h1>
+			<p>
+				This is a project I did for my web development class at the University of Calgary in the Fall of 2023.<br/><br/>
+				Aside from a Google font, all of the art is mine, and the gameplay is pure Javascript and DOM manipulation.<br/><br/>
+				I was kind of proud of how it turned out, so here it is as my showcase website, modified slightly with this explanation.
+			</p>
+		</div>
+		<div id="instructions" class="text-stuff">
+            <h1>INSTRUCTIONS</h1>
+            <p>
+                This two-player game is about which of you have the quicker draw!<br>
+                <br>
+                When the game begins, each player is given the set of possible keys they will have to press:
+            </p>
+            <div class="i-split-2">
+                <div>
+                    <img src="assets/keys/keygroup-1-1.png" width="252" height="152" alt="keygroup 1">
+                    <p>Player 1 will get (at most) these keys</p>
+                </div>
+                <div>
+                    <img src="assets/keys/keygroup-2-1.png" width="252" height="152" alt="keygroup 2">
+                    <p>Player 2 will get (at most) these keys</p>
                 </div>
             </div>
-            <div id="history_1" class="section-header content-block">
-                <h2>Historical Emergence</h2>
-            </div> 
-            <div class="section-content content-block">
-                <p>
-                    Historical analysis reveals a complex journey of zero, marked by rare and fragmented appearances intertwined with practical and philosophical considerations. Mathematics was based on real world problems and solutions. If ancient peoples needed to figure out how many seeds they would need for a field, the answer was almost never 0 or -18. Thus, there was a lack of abstraction in early mathematics. 
-                </p>
-                <br/>
-                <p>
-                    In ancient Babylonia, zero surfaces as an accounting device, integral for efficient record-keeping within a sexagesimal numeral system [5]. Despite understanding the notion of nothingness, its status as a number remains ambiguous, primarily serving as a placeholder rather than a distinct numerical entity. This placeholder nature allowed for large values to be interpreted correctly. For example, Compared to our modern notation, early Babylonians could not distinguish between 2106 and 216 due to a lack of symbol for 0. Context would have to show which was intended [1]. 
-                </p>
-                <br/>
-                <div class="inner-image">
-                    <img src="assets/ancient.png" id="ancient">
-                    <p>
-                        Similarly, ancient Greece, characterized by a focus on more abstract concepts such as geometry, acknowledges zero's presence but predominantly as a philosophical concept rather than a mathematical one, reflecting skepticism towards its implications. This was apparent in zeros' use being largely dominated by merchants rather than mathematicians. In particular, Pythagoras and his followers were skeptical of the concept of zero since it contradicted their belief in the perfection of numbers. Numbers were seen as fundamental principles governing the universe, and each number held significant symbolic and metaphysical meaning. Zero, as a number representing absence or nothingness, contradicted the idea of numbers as perfect and complete entities [5]. 
-                    </p>
-                </div>
-            </div>
-            <div id="history_2" class="section-header content-block">
-                <h2>Indian Development and Spread</h2>
-            </div>
-            <div class="section-content content-block">
-                <p>
-                    Indian mathematics marks a significant milestone with the birth of modern numerals and the formalization of zero (‘Shunya’) as a number around 650 AD [2]. The Indian numeral system, similar to the Babylonians, utilized a place-value system where zero, denoted as a dot initially, represented an empty place, enabling precise notation and arithmetic operations. Mathematicians like Brahmagupta, Mahavira, and Bhaskara contributed to its mathematical usage, though encountering conceptual challenges particularly concerning division by zero. Brahmagupta struggled with division, either incorrectly hypothesizing that "0/0 = 0" or ignoring the problem entirely stating that "n divided by zero is equal to n/0". 200 years later, Mahavira says that “a number remains unchanged when divided by zero” which is also incorrect. 300 years after that, Bhaskara states that “n/0 = infinity” with his reasoning being that “In this quantity consisting of that which has zero for its divisor, there is no alteration, though many may be inserted or extracted; as no change takes place in the infinite and immutable God when worlds are created or destroyed”. It's rather poetic that pondering the nature of zero led mathematicians to the gateways of infinity [1]. 
-                </p>
-                <br/>
-                <div class="inner-image">
-                    <p>
-                        Though significant advancements were made, there was still much skepticism. The idea of ‘shunya’ could be perceived as contradicting certain philosophical and religious doctrines that emphasized the importance of existence and substance. Thus, the adoption of new mathematical concepts, such as zero, often faced resistance due to adherence to traditional methods. Unfortunately, the mystery of division by zero would continue to elude mathematicians for centuries to come [2].
-                    </p>
-                    <img src="assets/meme.png" id="meme">
-                </div>
-                <br/>
-                <p>
-                    Arabian and European mathematical traditions were deeply intertwined. While Indian mathematicians were the pioneers, Arabian mathematicians and astronomers can be credited with preserving and introducing these ideas to Europe. Furthermore, during the Islamic golden age, great advancements were made in regards to Arithmetic, Algebra, Algorithms and Quadratics, specifically by mathematician Al-Khawarizmi. This Arabian influence can be seen in the coining of the term ‘Arabic numeral’, even though they had originated in India. However, both Europe and Arabia faced similar challenges in terms of the skepticism towards zero. Islam, like other Abrahamic religions, places importance on the notion of creation and the existence of everything as part of God's design. The idea of zero, representing nothingness or absence, could be seen as conflicting with this worldview. There were concerns about whether zero implied a void or emptiness that contradicted the idea of God's creation [6]. Similarly, European theologians expressed concerns about zero's implications for theological concepts such as creation and the nature of God. The idea of zero as representing nothingness or void raised theological questions about the nature of existence and the divine order. Furthermore, resistance toward zero stemmed from cultural and philosophical biases inherited from Greek thought.
-                </p>
-                <br/>
-                <div class="inner-image center">
-                    <img src="assets/arabic.png" id="arabic">
-                </div>
-            </div>
-            <div class="section-header content-block" id="computers">
-                <h2>Zero in Computer Representations</h2>
-            </div>
-            <div class="section-content content-block">
-                <p>
-                    Jumping ahead several centuries, the symbol zero has a number of applications in the space of computers, down even to their fundamentals. At their core, computers rely on switches: notably, the state of these switches as off or on, open or closed, presently running current or not. More commonly, and pertinent to this study, is that these states are most commonly known as “0” or “1” [7]. It is conceivable, then, that maintaining a sequence of switch states, can be used to store information. It would have to be transcribed in some way to a sequence of 0s and 1s, but it is no different to storing information in the same word form as this report. In order to use this information, however, it needs to take these sequences of switch states and produce new sequences.
-                </p>
-                <br/>
-                <div class="inner-image">
-                    <p>
-                        At their lowest level this is realized through the logic gate; built using transistors, logic gates take one or two signals and produce an output. [7] For instance, the AND gate takes two signals. If both input signals are 1 (or “on”) then the output signal is 1, and in all other cases - if one or both signals is 0 (or “off”) then the output signal is 0. 
-                        Another is the NOT gate, also known as an inverter, that takes one input and outputs the opposite signal. [7]
-                    </p>
-                    <img src="assets/logic_gate.gif" id="logic-gate">
-                </div>
-                <br/>
-                <p>
-                    More logical operators can be built using these gates, like NOT, NOR, XOR, [7] and these gates can build even more complicated machines, like this adder for 4-bit binary numbers
-                </p>
-                <div class="inner-image center">
-                    <img src="assets/gates.gif" id="gates">
-                    <img src="assets/adder.png" id="adder">
-                </div>
-                <br/>
-                <p>
-                    So one can surmise that there are no restrictions in the complexity of these circuit constructions theoretically, our case being the capabilities of the device you are using to read this. This has huge implications for the use of 0 in computers: it is half the concept needed to enable computer controlled devices. Especially today, computers are capable of anything that may interface with them, limited only by the speed at which they can process information. Yet this processing power continues to grow year over year - Moore’s law, made the prediction that the number of transistors able to be used in an integrated circuit will double every two years without increasing (very much) in cost, and this has held for the past 50 years [8]. The problem with this representation, then, is it is never really worked with in this context. In personal experience, a majority of a programmer's experience is with much higher level languages that aren’t concerned with binary values. Working at the transistor level requires specialization, so it isn’t able to be used very commonly. Even so, it’s fascinating to know what power 0 has in the digital realm.
-                </p>
-            </div>
-            <div class="section-header content-block" id="origin">
-                <h2>The Unifier - Zero as the Origin</h2>
-            </div>
-            <div class="section-content content-block">
-                <div class="inner-image">
-                    <p>
-                        In sifting through each of these interpretations, we noticed and want to present an interpretation that isn’t 
-                        commonly explored (or, admittedly, is hard to search for). In visual representations of any amount, there is an 
-                        assumed level of context needed to understand it. For instance, this is a picture of a bowl with 5 apples in it:
-                    </p>
-                    <img id="apples" src="assets/apples.jpg"/>
-                </div>
-                <br/>
-                <div class="inner-image">
-                    <p>
-                        Naturally, one would see the apples and count their individual instances, however, one can imply that it is 
-                        served on the basis of knowing what the bowl without apples would look like.
-                    </p>
-                    <img id="apples2" src="assets/apples2.jpg"/>
-                </div>
-                <br/>
-                <p>
-                    This is trivial, as we established, since the lack of apples in the bowl is uninteresting. It does lead us to 
-                    consider, though, that the apples were not always in the bowl - the bowl had to be made, sold, and brought to 
-                    the kitchen table in order to be filled with apples. Before there were 3 apples there were 0 apples, making 
-                    zero the origin, or point of reference, for the number of apples in the bowl.
-                </p>
-                <br/>
-                <p>
-                    The Alberta middle school curriculum defines “Origin” as “[the point] in a coordinate plane where the x-axis and the y-axis intersect.” and “The origin is located at the coordinates ( 0, 0)” [9]. Relatably, there are a number of software tools that default to the origin at (0, 0) or (0, 0, 0). Some examples here are screenshots from desmos, a popular online graphing calculator, and Blender, a 3D modeling tool.
-                </p>
-                <br/>
-                <div class="inner-image center">
-                    <img id="desmos" src="assets/desmos.png">
-                </div>
-                <br/>
-                <div class="inner-image center">
-                    <img id="blender" src="assets/blender.png">
-                    <img id="blender2" src="assets/blender2.png">
-                </div>
-                <br/>
-                <div class="inner-image">
-                    <img id="histogram" src="assets/histogram.png">
-                    <p>
-                        We could also consider data visualization tools like histograms. In order to effectively show the magnitude of difference between values, the start of its axis should be zero, otherwise it could be taken as misleading its reader [10].
-                    </p>
-                </div>
-                <br/>
-                <p>
-                    Additionally, we can consider zero indexing in computer programming: the best example may be the C programming language. 
-                    C has the concept of "pointers", which allows for the manipulation and use of raw memory addresses. This allows for very
-                    precise memory manipulation; given a memory address via pointer one can use offsets to access any allocated memory both 
-                    behind and ahead of it regardless of data type being stored, or the object holding this data [12].
-                </p>
-                <br/>
-                <p>
-                    These examples aim to present zero as the de-facto reference point when it comes to the visualization of information, which naturally allows us to understand the scale or magnitude of information that is presented to us. It requires, however, the concept of absence to make sense For instance, Euclid’s definition of a number does not allow for the concept of zero - simply the “unit” and multitudes of them [11]. Likewise, we can consider the difference between a void space and one with a number of any-sided shapes, but can we consider a shape with 0 sides? Would it exist?
-                </p>
-                <br/>
-                <p>
-                    In the end, this way of defining zero can be seen as an extension of the ancient interpretations, to be used as a 
-                    practical tool when convenient, but if we consider this use with information, it then requires the abstract definitions 
-                    that we have managed to develop in order to be useful.
-                </p>
-            </div>
-            <div class="section-header content-block" id="references">
-                <h2>References</h2>
-            </div>
-            <div class="section-reference content-block">
-                <p>[1] Josa. (n.d.). http://www.josa.ro/docs/josa_2008_1/a.22_A_HISTORY_OF_ZERO.pdf</p>
-                <br/>
-                <p>[2] Sid. (n.d.-b). https://www.sid.ir/EN/VEWSSID/J_pdf/12392000601.pdf</p>
-                <br/>
-                <p>[3] Merriam-Webster. (n.d.). <em>Zero definition & meaning.</em> Merriam-Webster. https://www.merriam-webster.com/dictionary/zero</p>
-                <br/>
-                <p>[4] Representing something out of nothing: The dawning of zero: Trends in cognitive sciences. (n.d.-b). https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(16)30125-5</p>
-                <br/>
-                <p>[5] Encyclopædia Britannica, inc. (n.d.). <em>Zero.</em> Encyclopædia Britannica. https://www.britannica.com/science/zero-mathematics</p>
-                <br/>
-                <p>[6] Zarepour, M. S. (2022, Apr 9). <em>Arabic and Islamic philosophy of Mathematics.</em> Stanford Encyclopedia of Philosophy. https://plato.stanford.edu/entries/arabic-islamic-phil-math/</p>
-                <br/>
-                <p>[7] Lague, Sebastian (2020, Nov 16) <em>How Computers Work</em> [Video File]. Youtube. https://www.youtube.com/watch?v=QZwneRb-zqA</p>
-                <br/>
-                <p>[8] “Moore’s Law.” <em>Intel</em>, 18 Sep 2023, https://www.intel.com/content/www/us/en/newsroom/resources/moores-law.html#gs.79lfh6. Accessed Apr 7 2024.</p>
-                <br/>
-                <p>[9] “Origin” <em>Government of Alberta</em>, n.d. https://www.learnalberta.ca/content/memg/division03/Origin/index.html. Accessed Apr 7 2024.</p>
-                <br/>
-                <p>[10] “Bar Charts.” <em>Tableau</em>, n.d. https://www.tableau.com/data-insights/reference-library/visual-analytics/charts/bar-charts. Accessed Apr 7 2024.</p>
-                <br/>
-                <p>[11] Joyce, David. “Euclid’s Elements, Book VII, Definitions 1 and 2” <em>Department of Mathematics and Computer Science, Clark University</em>, n.d. https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/defVII1.html. Accessed Apr 7 2024</p>
-                <br/>
-                <p>[12] “C Pointers and Arrays” <em>W3Schools</em>, n.d. https://www.w3schools.com/c/c_pointers_arrays.php. Accessed Apr 9 2024</p>
-            </div>
-            <div class="section-reference content-block">
-                <br/>
-                Images used with the intent of illustrative teaching, falling under <a href="https://laws-lois.justice.gc.ca/eng/acts/c-42/page-6.html#h-103270">Fair Dealing</a>.
-            </div>
+            <p>
+                When both players confirm, get ready. Because after a random amount of time the game will go
+            </p>
+            <h2>DRAW</h2>
+            <p>
+                and the game will display the key each player has to press.<br>
+                Whoever presses their designated key first wins!<br>
+                <br>
+                Be careful though, if you press the wrong key you will miss, and your opponent might be able to get a free shot!<br>
+                <br>
+                if both players miss, you'll move closer and you'll get a smaller set of possible keys.<br>
+            </p>
         </div>
     </body>
 </html>
